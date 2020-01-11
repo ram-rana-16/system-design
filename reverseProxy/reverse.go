@@ -11,12 +11,12 @@ func getPort() string {
 }
 func logSetup() {
 	aURL := os.Getenv("A_CONDITION_URL")
-	bURL := os.Getenv("B_CONDITION_RL")
+	bURL := os.Getenv("B_CONDITION_URL")
 	defultURL := os.Getenv("DEFAULT_CONDITION_URL")
-	fmt.Printf("redirect to URL a : %s", aURL)
-	fmt.Printf("redirect tor URL b: %s", bURL)
-	fmt.Printf("redirect to default URL: %s", defultURL)
-	fmt.Printf("server is running on %s", getPort())
+	fmt.Printf("redirect to URL a : %s\n", aURL)
+	fmt.Printf("redirect tor URL b: %s\n", bURL)
+	fmt.Printf("redirect to default URL: %s\n", defultURL)
+	fmt.Printf("server is running on %s\n", getPort())
 
 }
 func main() {
