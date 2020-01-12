@@ -5,7 +5,13 @@ import(
 	"net/http/httputil"
 	"sync/atomic"
 	"net/http"
+	"fmt"
+	"flag"
 )
+
+// global serverpool
+var serverPool ServerPool
+
 // Backaned defines a backed properties
 type Backaned struct{
 	Name string
@@ -56,3 +62,16 @@ func lb(w http.ResponseWriter, req *http.Request) {
 
 }
  
+
+func main() {
+	port := flag.Int("port", 8080, "ort to run the server")
+	
+	server := http.Server{
+		Addr: fmt.Sprintf(":%d", *port),
+		Handler: http.HandlerFunc(lb),
+	}
+	err := server.ListenAndServe()
+	if err != nil {
+		panic(err)
+	}
+}
